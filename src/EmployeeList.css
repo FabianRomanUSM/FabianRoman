@@ -55,7 +55,7 @@ body {
 }
 
 /* Estilos del contenedor de inicio de sesión */
-.login-box {
+.employee-box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -69,19 +69,19 @@ body {
 }
 
 /* Estilos del título del formulario de inicio de sesión */
-.login-box h2 {
+.employee-box h2 {
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
 }
 
 /* Estilos del contenedor del campo de usuario */
-.login-box .user-box {
+.employee-box .user-box {
   position: relative;
 }
 
 /* Estilos del campo de entrada de usuario */
-.login-box .user-box input {
+.employee-box .user-box input {
   width: 100%;
   padding: 8px 0;
   font-size: 22px;
@@ -94,7 +94,7 @@ body {
 }
 
 /* Estilos de etiqueta flotante del campo de usuario */
-.login-box .user-box label {
+.employee-box .user-box label {
   position: absolute;
   top: 0;
   left: 0;
@@ -107,7 +107,7 @@ body {
 
 /* Estilos de la etiqueta flotante cuando el campo de usuario está enfocado o tiene un valor válido */
 
-.login-box .user-box input:valid ~ label {
+.employee-box .user-box input:valid ~ label {
   top: -38px;
   left: 0;
   color: #8a5fe7;
@@ -115,7 +115,7 @@ body {
 }
 
 /* Estilos del botón de inicio de sesión */
-.login-box form button {
+.employee-box form button {
   position: relative;
   display: block;
   margin: 0 auto; 
@@ -133,7 +133,7 @@ body {
 }
 
 /* Estilos del botón de inicio de sesión al pasar el ratón */
-.login-box button:hover {
+.employee-box button:hover {
   background: rgba(147, 112, 219, 0.9); 
   box-shadow: 0 0 5px #4703f4,
               0 0 15px #4703f4,
@@ -144,13 +144,13 @@ body {
 }
 
 /* Estilos de las líneas animadas dentro del botón de inicio de sesión */
-.login-box button span {
+.employee-box button span {
   position: absolute;
   display: block;
 }
 
 /* Animación de la primera línea */
-.login-box button span:nth-child(1) {
+.employee-box button span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -169,7 +169,7 @@ body {
 }
 
 /* Animación de la segunda línea */
-.login-box button span:nth-child(2) {
+.employee-box button span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -189,7 +189,7 @@ body {
 }
 
 /* Animación de la tercera línea */
-.login-box button span:nth-child(3) {
+.employee-box button span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -209,7 +209,7 @@ body {
 }
 
 /* Animación de la cuarta línea */
-.login-box button span:nth-child(4) {
+.employee-box button span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
