@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import EmployeeList from './EmployeeList';
-import { BrowserRouter as Router, Route, Navigate } from 'react-router-dom';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -17,7 +16,7 @@ function App() {
     setPasswordError('');
 
     if (!username.trim()) {
-      setUsernameError('Nombre de usuario no puede estar vacío.');
+      setUsernameError('Usuario no puede estar vacío.');
     }
 
     if (!password.trim()) {
@@ -29,7 +28,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:5146/api/Auth/Login', {
+      const response = await fetch('http://localhost:5146/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,8 +40,12 @@ function App() {
         const data = await response.json();
         const authToken = data.token;
 
-        setToken(authToken);
-        setShowEmployeeList(true);
+        if (authToken) {
+          setToken(authToken);
+          setShowEmployeeList(true);
+        } else {
+          setUsernameError('Credenciales inválidas.');
+        }
       } else {
         const errorData = await response.json();
         if (errorData.message === 'Invalid username') {
@@ -59,46 +62,64 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    setToken('');
+    setShowEmployeeList(false);
+  };
+
   return (
-    <Router>
-      <div className="background-gradient">
-        <div className="container mt-5">
-          {!token ? (
-            <div className="card login-box">
-              <div className="card-body">
-                <h2 className="card-title text-center mb-4">Login</h2>
-                <form>
-                  <div className="user-box">
-                    <input type="text" className="form-control" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                    <label htmlFor="username" className="form-label">Usuario</label>
-                  </div>
-                  <div className="user-box">
-                    <input type="password" className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <label htmlFor="password" className="form-label">Contraseña</label>
-                  </div>
-                  <button type="button" className="" onClick={handleLogin}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Login
-                  </button>
-                  {showEmployeeList && <Navigate to="/employee-list" />}
-                  <button type="button" className="" onClick={() => setShowEmployeeList(true)}>Empleado</button>
-                  {usernameError && <div className="alert alert-danger mt-2">{usernameError}</div>}
-                  {passwordError && <div className="alert alert-danger mt-2">{passwordError}</div>}
+    <div className="background-gradient">
+      <div className="container mt-5">
+        {showEmployeeList ? (
+          <EmployeeList token={token} username={username} onLogout={handleLogout} />
+        ) : (
+          <div className="card login-box">
+            <div className="card-body">
+              <h2 className="card-title text-center mb-4">Login</h2>
+              <form>
+                <div className="user-box">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                  <label htmlFor="username" className="form-label">
+                    Usuario
+                  </label>
+                </div>
+                <div className="user-box">
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <label htmlFor="password" className="form-label">
+                    Contraseña
+                  </label>
+                </div>
+                <button type="button" className="" onClick={handleLogin}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  Login
+                </button>
                 </form>
-              </div>
             </div>
-          ) : (
-            <>
-              <Navigate to="/employee-list" />
-              <Route path="/employee-list" element={<EmployeeList token={token} />} />
-            </>
-          )}
-        </div>
+            {usernameError && (
+              <div className="alert alert-danger mt-2">{usernameError}</div>
+            )}
+            {passwordError && (
+              <div className="alert alert-danger mt-2">{passwordError}</div>
+            )}
+          </div>
+        )}
       </div>
-    </Router>
+    </div>
   );
 }
 
