@@ -47,11 +47,12 @@
 html {
   height: 100%;
 }
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: linear-gradient(#51378B, #384596, #D3543D, #7EAD50);
+  background: linear-gradient(to right, #51378B, #384596, #D3543D, #7EAD50, #51378B);
 }
 
 /* Estilos del contenedor de inicio de sesión */
@@ -226,4 +227,106 @@ body {
   50%,100% {
     bottom: 100%;
   }
+}
+
+/* Empleado */
+.employee-box {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.employee-box h2,
+.employee-box h3 {
+  color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.employee-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea los elementos al centro horizontalmente */
+}
+
+.employee-box label {
+  width: 100%;
+  max-width: 300px; /* Establece un ancho máximo para las etiquetas */
+  padding: 8px 0;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.employee-box input {
+  width: 100%;
+  max-width: 300px; /* Establece un ancho máximo para los campos de entrada */
+  padding: 8px;
+  font-size: 24px;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.employee-box button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #03e9f4;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: rgba(147, 112, 219, 0.7);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  max-width: 300px; /* Establece un ancho máximo para los botones */
+  box-sizing: border-box;
+}
+
+
+.employee-box button:hover {
+  background: rgba(147, 112, 219, 0.9);
+  box-shadow: 0 0 5px #4703f4, 0 0 15px #4703f4, 0 0 30px #4703f4, 0 0 60px #4703f4;
+  color: #fff;
+}
+
+.employee-box table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.employee-box th,
+.employee-box td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #fff;
+}
+
+.employee-box th {
+  background-color: #282c34;
+  color: #fff;
+}
+
+.employee-box td {
+  color: #fff;
+}
+
+.employee-box .icon {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.employee-box .icon:hover {
+  color: #8a5fe7; /* Color de resaltado al pasar el ratón sobre los iconos */
 }

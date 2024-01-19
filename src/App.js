@@ -10,6 +10,7 @@ function App() {
   const [token, setToken] = useState('');
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loggedInUser, setLoggedInUser] = useState('');
 
   const handleLogin = async () => {
     setUsernameError('');
@@ -42,6 +43,7 @@ function App() {
 
         if (authToken) {
           setToken(authToken);
+          setLoggedInUser(username);
           setShowEmployeeList(true);
         } else {
           setUsernameError('Credenciales inválidas.');
@@ -63,6 +65,7 @@ function App() {
   };
 
   const handleLogout = () => {
+    setLoggedInUser('');
     setToken('');
     setShowEmployeeList(false);
   };
@@ -71,7 +74,7 @@ function App() {
     <div className="background-gradient">
       <div className="container mt-5">
         {showEmployeeList ? (
-          <EmployeeList token={token} username={username} onLogout={handleLogout} />
+          <EmployeeList token={token} username={loggedInUser} onLogout={handleLogout} />
         ) : (
           <div className="card login-box">
             <div className="card-body">
@@ -108,7 +111,7 @@ function App() {
                   <span></span>
                   Login
                 </button>
-                </form>
+              </form>
             </div>
             {usernameError && (
               <div className="alert alert-danger mt-2">{usernameError}</div>
