@@ -4,6 +4,7 @@ import './App.css';
 import EmployeeList from './EmployeeList';
 
 function App() {
+  // Estados para manejar el formulario de inicio de sesión
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showEmployeeList, setShowEmployeeList] = useState(false);
@@ -12,10 +13,12 @@ function App() {
   const [passwordError, setPasswordError] = useState('');
   const [loggedInUser, setLoggedInUser] = useState('');
 
+  // Función para manejar el intento de inicio de sesión
   const handleLogin = async () => {
     setUsernameError('');
     setPasswordError('');
 
+    // Validaciones de campos de usuario y contraseña
     if (!username.trim()) {
       setUsernameError('Usuario no puede estar vacío.');
     }
@@ -29,6 +32,7 @@ function App() {
     }
 
     try {
+      // Petición al servidor para autenticar el usuario
       const response = await fetch('http://localhost:5146/api/auth/login', {
         method: 'POST',
         headers: {
@@ -38,6 +42,7 @@ function App() {
       });
 
       if (response.ok) {
+        // Si la autenticación es exitosa, se actualizan los estados
         const data = await response.json();
         const authToken = data.token;
 
@@ -49,6 +54,7 @@ function App() {
           setUsernameError('Credenciales inválidas.');
         }
       } else {
+        // Manejo de errores de autenticación
         const errorData = await response.json();
         if (errorData.message === 'Invalid username') {
           setUsernameError('Nombre de usuario ingresado incorrecto.');
@@ -59,27 +65,33 @@ function App() {
         }
       }
     } catch (error) {
+      // Manejo de errores de red
       console.error('Error durante el inicio de sesión:', error);
       setUsernameError('Error durante la autenticación');
     }
   };
 
+  // Función para manejar el cierre de sesión
   const handleLogout = () => {
     setLoggedInUser('');
     setToken('');
     setShowEmployeeList(false);
   };
 
+  // Renderizado del componente
   return (
     <div className="background-gradient">
       <div className="container mt-5">
         {showEmployeeList ? (
+          // Si el usuario está autenticado, se muestra la lista de empleados
           <EmployeeList token={token} username={loggedInUser} onLogout={handleLogout} />
         ) : (
+          // Si el usuario no está autenticado, se muestra el formulario de inicio de sesión
           <div className="card login-box">
             <div className="card-body">
               <h2 className="card-title text-center mb-4">Login</h2>
               <form>
+                {/* Campos de usuario y contraseña */}
                 <div className="user-box">
                   <input
                     type="text"
@@ -104,6 +116,7 @@ function App() {
                     Contraseña
                   </label>
                 </div>
+                {/* Botón de inicio de sesión */}
                 <button type="button" className="" onClick={handleLogin}>
                   <span></span>
                   <span></span>
@@ -113,6 +126,7 @@ function App() {
                 </button>
               </form>
             </div>
+            {/* Mensajes de error */}
             {usernameError && (
               <div className="alert alert-danger mt-2">{usernameError}</div>
             )}

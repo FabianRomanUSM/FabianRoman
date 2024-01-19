@@ -229,7 +229,11 @@ body {
   }
 }
 
+/*          */
 /* Empleado */
+/*          */
+
+/* Estilos del contenedor de la lista de empleados */
 .employee-box {
   width: 80%;
   margin: 0 auto;
@@ -242,6 +246,7 @@ body {
   text-align: center;
 }
 
+/* Estilos para los títulos h2 y h3 dentro de .employee-box */
 .employee-box h2,
 .employee-box h3 {
   color: #fff;
@@ -249,15 +254,17 @@ body {
   padding-top: 20px;
 }
 
+/* Estilos para el formulario dentro de .employee-box */
 .employee-box form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Alinea los elementos al centro horizontalmente */
+  align-items: center;
 }
 
+/* Estilos para el formulario dentro de .employee-box */
 .employee-box label {
   width: 100%;
-  max-width: 300px; /* Establece un ancho máximo para las etiquetas */
+  max-width: 300px;
   padding: 8px 0;
   font-size: 24px;
   color: #fff;
@@ -265,9 +272,10 @@ body {
   box-sizing: border-box;
 }
 
+/* Estilos para los campos de entrada del formulario dentro de .employee-box */
 .employee-box input {
   width: 100%;
-  max-width: 300px; /* Establece un ancho máximo para los campos de entrada */
+  max-width: 300px;
   padding: 8px;
   font-size: 24px;
   color: #fff;
@@ -278,6 +286,7 @@ body {
   box-sizing: border-box;
 }
 
+/* Estilos para los botones del formulario dentro de .employee-box */
 .employee-box button {
   margin-top: 20px;
   padding: 10px 20px;
@@ -289,23 +298,25 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  max-width: 300px; /* Establece un ancho máximo para los botones */
+  max-width: 300px;
   box-sizing: border-box;
 }
 
-
+/* Estilos para el botón al pasar el ratón sobre el formulario dentro de .employee-box */
 .employee-box button:hover {
   background: rgba(147, 112, 219, 0.9);
   box-shadow: 0 0 5px #4703f4, 0 0 15px #4703f4, 0 0 30px #4703f4, 0 0 60px #4703f4;
   color: #fff;
 }
 
+/* Estilos para la tabla dentro de .employee-box */
 .employee-box table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
 }
 
+/* Estilos para las celdas th y td de la tabla dentro de .employee-box */
 .employee-box th,
 .employee-box td {
   padding: 12px;
@@ -313,20 +324,24 @@ body {
   border-bottom: 1px solid #fff;
 }
 
+/* Estilos para las celdas th de la tabla dentro de .employee-box */
 .employee-box th {
   background-color: #282c34;
   color: #fff;
 }
 
+/* Estilos para las celdas td de la tabla dentro de .employee-box */
 .employee-box td {
   color: #fff;
 }
 
+/* Estilos para el ícono dentro de .employee-box */
 .employee-box .icon {
   margin-right: 10px;
   cursor: pointer;
 }
 
+/* Estilos para el ícono al pasar el ratón sobre el formulario dentro de .employee-box */
 .employee-box .icon:hover {
-  color: #8a5fe7; /* Color de resaltado al pasar el ratón sobre los iconos */
+  color: #8a5fe7;
 }
